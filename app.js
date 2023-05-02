@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import { connectDB } from "./config/Database.js";
 import userRoutes from "./routers/userRouter.js";
+import qrRoutes from "./routers/qrRouter.js";
 
 //config configuration
 dotenv.config({ path: "./config/config.env" });
@@ -32,8 +33,8 @@ app.use(
 app.use(morgan("dev"));
 
 // Use routes
-app.use('/api/.auth', userRoutes);
-// app.use('/api/scans', scanRoutes);
+app.use('/api/auth', userRoutes);
+app.use('/api/v1', qrRoutes);
 
 
 const port = process.env.PORT || 8000;
